@@ -5,3 +5,5 @@ Change directory to the new app directory that Vite just created and start the d
 cd spodify-profile-demo
 npm install
 npm run dev
+
+Happy coding! :D
