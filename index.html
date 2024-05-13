@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My Spotify Profile</title>
+        <script src="src/script.js" type="module"></script>
+        <link rel="stylesheet" type="text/css" href="script.css" />
+    </head>
+    <body>
+      <h1>Display your Spotify profile data</h1>
+
+      <section id="profile">
+      <h2>Logged in as <span id="displayName"></span></h2>
+      <span id="avatar"></span>
+      <ul>
+          <li>User ID: <span id="id"></span></li>
+          <li>Email: <span id="email"></span></li>
+          <li>Spotify URI: <a id="uri" href="#"></a></li>
+          <li>Link: <a id="url" href="#"></a></li>
+          <li>Profile Image: <span id="imgUrl"></span></li>
+      </ul>
+      </section>
+      <section>
+        <h2>Dropdown</h2>
+      </section>
+      <div id="playlistTrack">
+        <h2> This is the playlist and track box</h2>
+        <section id="playlists" class="playlist-section">
+          <h2>Your playlists</h2>
+          <ul id="playList"  class="playlist-list"></ul>
+        </section>
+        <section id="tracks" class="playlist-tracks">
+          <h2>your tracks</h2>
+          <ul id="tracksList" class="user_tracks"></ul>
+        </section>
+        
+    </div>
+      
+    </body>
+</html>
