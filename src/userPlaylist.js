@@ -60,7 +60,6 @@ export async function fetchUserPlaylistTracks(accessToken, playlist_id) {
             Authorization: `Bearer ${accessToken}`
         }
     });
-    console.log('playlist_id', playlist_id);
 
     if (!response.ok) {
         throw new Error('Failed to fetch playlist tracks');
@@ -99,36 +98,37 @@ export async function displayTracks(accessToken, tracks) {
        });
 } 
 
-export async function deleteUserPlaylistTracks(accessToken, playlist_id) {
+export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackIdToDelete) {
     try {
-        //const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {  this is delete playlist
-        const response = await fetch(`https://api.spotify.com/v1/me/tracks`, { 
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, { 
         method: 'DELETE',
         headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    });
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tracks: trackIdToDelete.map(uri => ({ uri })),
+            snapshot_id: playlist_id
+        })
         
+    });  
     if (!response.ok) {
-        throw new Error('Failed to delete  ln 111 track sorry :(');
-    }   
-        console.log('showing track name, and  track ID ln113',  track. name, track.id);
-
-
-    const data = await response.json()
-    const deletedTrackIds = data.items ? data.items.map(item => item.track.id) : [];
-
-     // Log track name and ID before deletion
-     data.items.forEach(item => {
-        console.log('Deleted Track Name:', item.track.name);
-        console.log('Deleted Track ID:', item.track.id);
-    });
-
-
-
-    return { success: true, deletedTrackIds };
-} catch (error) {
-    console.error('Error deleting track:', error.message);
-    throw error;
+        throw new Error('Failed to delete tracks. Sorry :(');
     }
+
+    const data = await response.json();
+
+    if (data.items && Array.isArray(data.items)) {
+        // Log deleted track information
+        data.items.forEach(item => {
+            console.log('Deleted Track Name:', item.track.name);
+            console.log('Deleted Track ID:', item.track.id);
+        });
+    } else {
+        console.log('No items found in the response to delete.');
+    }
+
+} catch (error) {
+    console.error('Error deleting tracks:', error.message);
+}
 }

@@ -1,11 +1,8 @@
 import { fetchProfile, populateUI } from './profile.js';
 import { redirectToAuthCodeFlow, getAccessToken } from './authentication.js';
 import { fetchUserPlaylist, displayPlaylists, showUserPlaylist, fetchUserPlaylistTracks, deleteUserPlaylistTracks, displayTracks } from './userPlaylist.js';
-//import { defineConfig, loadEnv } from 'vite';
 
 const clientId = import.meta.env.VITE_CLIENT_ID;
-console.log('client Id',clientId);
-console.log('jello hello',import.meta.env.VITE_CLIENT_ID);
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");  
 
@@ -22,9 +19,10 @@ if (!code) {
             displayPlaylists(accessToken, playlists);
             const userPlaylists = await showUserPlaylist(accessToken);
             const playlist_id = userPlaylists[0].id;
-            const userPlaylistTracks = await fetchUserPlaylistTracks(accessToken, playlist_id);  
-            const deletedUserPlaylistTracks = await deleteUserPlaylistTracks(accessToken, playlist_id);
-            displayTracks(accessToken, userPlaylistTracks);
+            const userPlaylistTracks = await fetchUserPlaylistTracks(accessToken, playlist_id); 
+            const trackIdToDelete = [`spodify:track:${userPlaylistTracks[0].id}`] 
+            const deletedUserPlaylistTracks = await deleteUserPlaylistTracks(accessToken, playlist_id, trackIdToDelete);
+            displayTracks(accessToken, userPlaylistTracks, trackIdToDelete);
             
 
  
