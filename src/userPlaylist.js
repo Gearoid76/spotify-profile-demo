@@ -104,7 +104,7 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            tracks: 'trackIdToDelete.map(uri => ({ uri }))',
+            tracks: `${trackIdToDelete}.map(uri => ({ uri }))`,
             snapshot_id: `${playlist_id}`
         })
         
