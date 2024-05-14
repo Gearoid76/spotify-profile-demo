@@ -1,6 +1,7 @@
 import { fetchProfile, populateUI } from './profile.js';
 import { redirectToAuthCodeFlow, getAccessToken } from './authentication.js';
 import { fetchUserPlaylist, displayPlaylists, showUserPlaylist, fetchUserPlaylistTracks, deleteUserPlaylistTracks, displayTracks } from './userPlaylist.js';
+import { fetchGenres, displayGenreList } from './genre.js';
 
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const params = new URLSearchParams(window.location.search);
@@ -23,6 +24,11 @@ if (!code) {
             const trackIdToDelete = [`spodify:track:${userPlaylistTracks[0].id}`] 
             const deletedUserPlaylistTracks = await deleteUserPlaylistTracks(accessToken, playlist_id, trackIdToDelete);
             displayTracks(accessToken, userPlaylistTracks, trackIdToDelete);
+            const genres = await fetchGenres(accessToken);
+            displayGenreList(genres);
+           
+           
+            
             
 
  
