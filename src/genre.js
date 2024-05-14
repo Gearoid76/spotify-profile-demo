@@ -1,4 +1,4 @@
-import { displayArtistsList } from "./artists";
+import { fetchArtists, displayArtistsList } from "./artists";
 
 export async function fetchGenres(accessToken) {
     try {
@@ -63,22 +63,5 @@ async function fetchArtistsByGenre(accessToken, genre) {
         console.error('Error fetching artists', error.message);
         throw error;
     }
-}
-
-
-
-
-
-export function displayArtists(artists) {
-    const artistsList = document.getElementById('artistList');
-    artistList.innerHTML = '';
-
-    artists.forEach(artist => {
-        const listItem = document.createElement('li');
-        const artistName = document.createElement('span');
-        artistName.textContent = artist.name;
-        listItem.appendChild(artistName);
-        artistsList.appendChild(listItem);
-    });
 }
         
