@@ -62,11 +62,15 @@ li{
  background-color: #f5cbcb;
  padding: 20px;
  overflow: scroll;
- width: 30%;
+ width: 40%;
  height: 220px;
  border: 10px;
  list-style: none;
  margin-right: 30%;
+}
+.genre-list>li{
+    display: flex;
+    justify-content: space-between;
 }
 .artist-list{
     display: flex;
@@ -74,7 +78,7 @@ li{
     background-color: #f5cbcb;
     padding: 20px;
     overflow: scroll;
-    width: 30%;
+    width: 40%;
     height: 220px;
     border: 10px;
     list-style: none;
@@ -85,8 +89,21 @@ li{
     background-color: #f5cbcb;
     padding: 20px;
     overflow: scroll;
-    width: 30%;
+    width: 40%;
     height: 220px;
     border: 10px;
     list-style: none;
+   }
+   .group-test{
+    display: flex;
+    align-items: stretch
+   }
+   .genre-section {
+    width: 30%;
+   }
+   .artist-section {
+    width: 30%
+   }
+   .songs-section {
+    width: 30%;
    }

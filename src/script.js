@@ -2,6 +2,7 @@ import { fetchProfile, populateUI } from './profile.js';
 import { redirectToAuthCodeFlow, getAccessToken } from './authentication.js';
 import { fetchUserPlaylist, displayPlaylists, showUserPlaylist, fetchUserPlaylistTracks, deleteUserPlaylistTracks, displayTracks } from './userPlaylist.js';
 import { fetchGenres, displayGenreList } from './genre.js';
+import { displayArtistsList, fetchArtists } from './artists.js';
 
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const params = new URLSearchParams(window.location.search);
@@ -26,6 +27,8 @@ if (!code) {
             displayTracks(accessToken, userPlaylistTracks, trackIdToDelete);
             const genres = await fetchGenres(accessToken);
             displayGenreList(genres);
+            const artists = await fetchArtists(accessToken);
+            displayArtistsList(artists);
            
            
             
