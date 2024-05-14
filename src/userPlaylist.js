@@ -25,8 +25,7 @@ export async function fetchUserPlaylist(accessToken) {
             console.error('Error showing user playlists', error.message);
             throw error;
         }
-    }
-
+}
 export function displayPlaylists(accessToken, playlists) {
     const playList = document.getElementById('playList');
     playList.innerHTML = '';
@@ -52,7 +51,6 @@ export function displayPlaylists(accessToken, playlists) {
         playList.appendChild(listItem); 
 });
 }
-
 export async function fetchUserPlaylistTracks(accessToken, playlist_id) {
     const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
         method:  'GET',
@@ -97,7 +95,6 @@ export async function displayTracks(accessToken, tracks) {
         trackList.appendChild(listItem); 
        });
 } 
-
 export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackIdToDelete) {
     try {
         const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, { 
@@ -107,8 +104,8 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            tracks: trackIdToDelete.map(uri => ({ uri })),
-            snapshot_id: playlist_id
+            tracks: 'trackIdToDelete.map(uri => ({ uri }))',
+            snapshot_id: `${playlist_id}`
         })
         
     });  
@@ -117,7 +114,6 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
     }
 
     const data = await response.json();
-
     if (data.items && Array.isArray(data.items)) {
         // Log deleted track information
         data.items.forEach(item => {
