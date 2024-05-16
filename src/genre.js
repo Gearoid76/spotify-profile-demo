@@ -33,11 +33,11 @@ export function displayGenreList(genres, accessToken) {
         showArtistsButton.addEventListener('click', async () => {
             try {
             const artists = await fetchArtistsByGenre(accessToken, genre);
-            displayArtists(artists);
-            }catch (error) {
+            displayArtistsList(artists);
+            } catch (error) {
                 console.error('Error fetching Artists', error.message);
             }
-        })
+        });
 
         listItem.appendChild(genreName);
         listItem.appendChild(showArtistsButton);

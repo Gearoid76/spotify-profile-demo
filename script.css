@@ -94,16 +94,19 @@ li{
     border: 10px;
     list-style: none;
    }
-   .group-test{
+   div#group-test{
     display: flex;
-    align-items: stretch
+    align-items: stretch;
+    justify-content: space-around;
+    padding-left: 10%;
+    
    }
    .genre-section {
-    width: 30%;
+    width: 40%;
    }
    .artist-section {
-    width: 30%
+    width: 40%
    }
    .songs-section {
-    width: 30%;
+    width: 40%;
    }
