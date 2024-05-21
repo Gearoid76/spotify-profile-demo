@@ -82,7 +82,7 @@ export async function displayTracks(accessToken,playlist_id, tracks) {
         
         deleteTracksButton.addEventListener('click', async (event) => {
         try {
-            const trackIdToDelete = [event.target.getAttribute('data-track-id')]; //now array
+            const trackIdToDelete = [event.target.getAttribute('data-track-id')]; //now an array
             await deleteUserPlaylistTracks(accessToken,playlist_id, trackIdToDelete); 
             listItem.remove();
         } catch (error) {
@@ -133,11 +133,9 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
             }
     
     const data = await response.json();
-    if (data.items && Array.isArray(data.items)) {
-        // Log deleted track information
+    if (data.snapshot_id) {
         data.items.forEach(item => {
-            console.log('Deleted Track Name:', item.track.name);
-            console.log('Deleted Track ID:', item.track.id);
+            console.log('Tracks deleted sucessfully');
         });
     } else {
         console.log('No items found in the response to delete.');
