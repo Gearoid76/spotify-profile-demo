@@ -67,7 +67,7 @@ export async function fetchUserPlaylistTracks(accessToken, playlist_id) {
     const tracks = data.items.map(item => item.track);
     return tracks;
 }
-export async function displayTracks(accessToken, tracks) {
+export async function displayTracks(accessToken,playlist_id, tracks) {
     const trackList = document.getElementById('tracksList');
     trackList.innerHTML = '';
 
@@ -78,12 +78,12 @@ export async function displayTracks(accessToken, tracks) {
         
         const deleteTracksButton = document.createElement('button');
         deleteTracksButton.textContent = 'Delete track';
-        deleteTracksButton.setAttribute('data-track-id', track.id); 
-
+        deleteTracksButton.setAttribute('data-track-id', track.uri); // track.uri was track.id
+        
         deleteTracksButton.addEventListener('click', async (event) => {
         try {
-            const trackIdToDelete = event.target.getAttribute('data-track-id');
-            await deleteUserPlaylistTracks(accessToken, trackIdToDelete); 
+            const trackIdToDelete = [event.target.getAttribute('data-track-id')]; //now array
+            await deleteUserPlaylistTracks(accessToken,playlist_id, trackIdToDelete); 
             listItem.remove();
         } catch (error) {
             console.error('Error deleting tracks', error.message);
@@ -112,6 +112,9 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
         const playlistData = await playlistResponse.json();
         const snapshot_id = playlistData.snapshot_id;
         console.log('snapshot_id', snapshot_id);
+        console.log('playlist_id', playlist_id);
+        console.log('trackIdToDelete', trackIdToDelete);
+        
 
         const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, { 
             method: 'DELETE',
