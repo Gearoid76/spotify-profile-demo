@@ -97,22 +97,38 @@ export async function displayTracks(accessToken, tracks) {
 } 
 export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackIdToDelete) {
     try {
-        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, { 
-        method: 'DELETE',
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            tracks: `${trackIdToDelete}.map(uri => ({ uri }))`,
-            snapshot_id: `${playlist_id}`
-        })
-        
-    });  
-    if (!response.ok) {
-        throw new Error('Failed to delete tracks. Sorry :(');
-    }
+        const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
+        if (!playlistResponse.ok) {
+            throw new Error('Failed to fetch playlist details.');
+           
+        }
+        const playlistData = await playlistResponse.json();
+        const snapshot_id = playlistData.snapshot_id;
+        console.log('snapshot_id', snapshot_id);
+
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, { 
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tracks: trackIdToDelete.map(uri => ({ uri })),
+                    snapshot_id: snapshot_id
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete tracks. Sorry :(');
+            }
+    
     const data = await response.json();
     if (data.items && Array.isArray(data.items)) {
         // Log deleted track information
