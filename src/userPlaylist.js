@@ -40,7 +40,7 @@ export function displayPlaylists(accessToken, playlists) {
         showTracksButton.addEventListener('click', async () => {
     try {
         const tracks = await fetchUserPlaylistTracks(accessToken, playlist.id);
-        displayTracks(accessToken, tracks);
+        displayTracks(accessToken, playlist.id, tracks);
     } catch (error) {
         console.error('Error fetching tracks:', error.message);
     }
