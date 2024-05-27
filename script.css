@@ -1,5 +1,5 @@
 /* styles.css */
-.searchResultsContainer {
+.searchContainer {
     display: flex;
     justify-content: space-between;
 }
