@@ -111,7 +111,7 @@ export async function deleteUserPlaylistTracks(accessToken, playlist_id, trackId
         }
         const playlistData = await playlistResponse.json();
         const snapshot_id = playlistData.snapshot_id;
-        console.log('snapshot_id', snapshot_id);
+        console.log('snapshot_id', snapshot_id);  // showing what is going on these three
         console.log('playlist_id', playlist_id);
         console.log('trackIdToDelete', trackIdToDelete);
         

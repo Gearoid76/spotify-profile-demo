@@ -1,4 +1,20 @@
 /* styles.css */
+.searchResultsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+#search {
+    display: flex;
+    align-items: center;
+}
+
+#searchResultContainers {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
 .playlistTrack {
     display: flex;
     flex-direction: row;
@@ -6,20 +22,27 @@
 li{
     display: flex;
 }
+div#playlistTrack{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+}
 
 .playlist-list {
     display: flex;
     flex-direction: column;
     background-color: #f5cbcb;
-    padding: 0;
+    padding: 20px;
     overflow: scroll;
     scrollbar-color: red orange;
     scrollbar-width: thin;
-    width: 33%;
+    width: 100%;
     list-style: none;
-    height:  250px;
+    height: 220px;
+    border: 10px; 
     text-align: center;
 }
+
 .playlist-list>li {
     display: flex;
     justify-content: space-between;
@@ -41,7 +64,7 @@ li{
     padding: 20px;
     overflow: scroll;
     scrollbar-width: thin;
-    width: 30%;
+    width: 100%;
     height: 220px;
     border: 10px;
     list-style: none;
@@ -51,6 +74,11 @@ li{
     display: flex;
     justify-content: space-between;
 
+}
+div#seachResults{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
 }
 .group-test {
     display: flex;
@@ -99,8 +127,8 @@ li{
     align-items: stretch;
     justify-content: space-around;
     padding-left: 10%;
-    
    }
+
    .genre-section {
     width: 40%;
    }

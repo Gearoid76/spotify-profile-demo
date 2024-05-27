@@ -7,10 +7,10 @@
         <link rel="stylesheet" type="text/css" href="script.css" />
     </head>
     <body>
-      <h1>Display your Spotify profile data</h1>
+      <h1>Project Jammming</h1>
 
-      <section id="profile">
-      <h2>Logged in as <span id="displayName"></span></h2>
+     <!-- <section id="profile">
+      <h2>Hello again <span id="displayName"></span></h2>
       <span id="avatar"></span>
       <ul>
           <li>User ID: <span id="id"></span></li>
@@ -19,23 +19,31 @@
           <li>Link: <a id="url" href="#"></a></li>
           <li>Profile Image: <span id="imgUrl"></span></li>
       </ul>
-      </section>
-      <section>
-          <section id="dropdown-container">
-            <h2>Dropdown hello</h2>
-          </section>   
-      </section>
+      </section> -->
+      <div id="searchResultsContainer">
+        <div id="search"><h2>Search</h2>searchBox</div>
+        <div id="searchResultContainers">
+          <section id="searchResult" class="result-section">
+            <h2>Results</h2>
+            <ul id="result" class="result-list"></ul>
+          </section>
+          <section id="serchTracks" class="searchPlaylist">
+            <h2>New Playlist</h2>
+            <ul id="searchPlaylist" class="searchplaylist"></ul>
+          </section> 
+        </div>
+      </div>
       <div id="playlistTrack">
         <section id="playlists" class="playlist-section">
           <h2>Your playlists</h2>
           <ul id="playList" class="playlist-list"></ul>
         </section>
         <section id="tracks" class="playlist-tracks">
-          <h2>your tracks</h2>
+          <h2>Your tracks</h2>
           <ul id="tracksList" class="user-tracks"></ul>
         </section> 
       </div>
-      <div id="group-test">
+    <!---  <div id="group-test">
             <div id="genres" class="genre-section">
               <h2>Genres</h2>
               <ul id="genreList" class="genre-list"></ul>
@@ -43,11 +51,11 @@
             <div id="artists" class="artist-section">
               <h2>Artists</h2>
               <ul id="artistList" class="artist-list"></ul>
-            </div>
+            </div> 
             <div id="songs" class="songs-section">
               <h2>Songs</h2>
               <ul id="songsList" class="songs-list"></ul>
-            </div>
-        </div>
+            </div> -->
+      </div>
     </body>
 </html>
